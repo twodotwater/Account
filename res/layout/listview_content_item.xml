@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transGray"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_small" >
+
+    <TextView
+        android:id="@+id/textView_name"
+        style="@style/TextViewInLinear"
+        android:text="@string/name" />
+
+    <TextView
+        android:id="@+id/textView_money"
+        style="@style/TextViewInLinear"
+        android:layout_weight="2"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/money" />
+
+    <TextView
+        android:id="@+id/textView_tMoney"
+        style="@style/TextViewInLinear"
+        android:text="@string/totalMoney" />
+
+    <TextView
+        android:id="@+id/textView_diffMoney"
+        style="@style/TextViewInLinear"
+        android:text="@string/diffMoney"
+        android:textColor="@color/holo_red_light" />
+
+</LinearLayout>

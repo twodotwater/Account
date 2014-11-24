@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/holo_orange_light"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/padding_normal"
+    android:paddingLeft="@dimen/padding_xlarger"
+    android:paddingTop="@dimen/padding_normal" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            style="@style/TextView"
+            android:text="@string/totalMoney" />
+
+        <TextView
+            android:id="@+id/textView_totalMoney"
+            style="@style/TextViewInLinear"
+            android:text="0"
+            android:textColor="@color/holo_red_light" />
+
+        <TextView
+            style="@style/TextView"
+            android:text="@string/averageMoney" />
+
+        <TextView
+            android:id="@+id/textView_averageMoney"
+            style="@style/TextViewInLinear"
+            android:text="0"
+            android:textColor="@color/holo_red_light" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_time"
+        style="@style/TextView" />
+
+</LinearLayout>

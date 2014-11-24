@@ -1,0 +1,50 @@
+<resources>
+
+    <!-- EditText -->
+    <dimen name="et_width">100dp</dimen>
+    <!-- TextView中文本大小 -->
+    <dimen name="tv_larger">28sp</dimen>
+    <dimen name="tv_large">20sp</dimen>
+    <dimen name="tv_normal">16sp</dimen>
+    <dimen name="tv_small">14sp</dimen>
+    <dimen name="tv_smaller">10sp</dimen>
+    <!-- 控件之间间隔 -->
+    <dimen name="margin_larger">40dp</dimen>
+    <dimen name="margin_large">20dp</dimen>
+    <dimen name="margin_normal">10dp</dimen>
+    <dimen name="margin_small">5dp</dimen>
+    <dimen name="padding_normal">5dp</dimen>
+    <dimen name="padding_large">10dp</dimen>
+    <dimen name="padding_xlarge">20dp</dimen>
+    <dimen name="padding_xlarger">30dp</dimen>
+    <dimen name="padding_small">3dp</dimen>
+    <dimen name="radius">6dp</dimen>
+    <dimen name="radius_small">3dp</dimen>
+    <dimen name="gap">1dp</dimen>
+    <dimen name="gap_px">1px</dimen>
+    
+	<!-- 包含EditText的linearLayout高度 -->
+    <dimen name="linearHeight">40dp</dimen>
+	<!-- 包含EditText的listView高度 -->
+    <dimen name="bgListViewHeight">120dp</dimen>
+	<!-- 顶部状态栏高度 -->
+    <dimen name="stateBarHeight">24dp</dimen>
+	<!-- 顶部状态栏中图标高度 -->
+    <dimen name="iconHeight">20dp</dimen>
+	<!-- 顶部状态栏中图标宽度 -->
+    <dimen name="iconWidth">20dp</dimen>
+	<!-- 侧边菜单栏宽度 -->
+    <dimen name="slidingpaneMenuWidth">220dp</dimen>
+	<!-- Spinner宽度 -->
+    <dimen name="spinnerWidth">100dp</dimen>
+	<!-- unit宽度 -->
+    <dimen name="tvUnitWidth">150dp</dimen>
+	<!-- unit宽度-窄 -->
+    <dimen name="tvUnitSmallWidth">60dp</dimen>
+	<!-- progressBar高度 -->
+    <dimen name="progressBarHeight">10dp</dimen>
+    <!-- 文件选择框宽度 -->
+    <dimen name="fileViewWidth">500dp</dimen>
+	<!-- 登陆输入框宽度 -->
+    <dimen name="loginWidth">200dp</dimen>
+</resources>
