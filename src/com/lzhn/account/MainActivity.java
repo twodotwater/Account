@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
+import android.widget.ShareActionProvider;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,8 @@ import com.lzhn.account.common.DataBuffer;
 import com.lzhn.account.common.Person;
 import com.lzhn.account.db.DBManager;
 import com.zzha.util.os.BaseActivity_v4;
+import com.zzha.util.share.ShareUtils;
+import com.zzha.util.share.WXUtils;
 import com.zzha.util.view.dialog.DialogUtils;
 import com.zzha.util.view.dialog.MyDialog;
 import com.zzha.util.view.dialog.MyDialog.OnBtnClickListener;
@@ -49,9 +53,19 @@ public class MainActivity extends BaseActivity_v4 {
 
 	private long previousPressTime = 0;
 
+	private ShareActionProvider shareActionProvider;
+
+	private WXUtils wxUtils;
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
+
+		MenuItem shareMenu = (MenuItem) menu.findItem(R.id.action_share);
+		shareActionProvider = (ShareActionProvider) shareMenu
+				.getActionProvider();
+		shareActionProvider.setShareIntent(ShareUtils.getShareTextIntent(null));
+
 		SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
 				.getActionView();
 		searchView.setQueryHint(Constant.STRING_QUERY_HINT);
@@ -89,6 +103,26 @@ public class MainActivity extends BaseActivity_v4 {
 	}
 
 	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// LogUtils.printExcp(TAG, item.getItemId());
+		switch (item.getItemId()) {
+		case R.id.action_share:
+			Toast.makeText(this, "on share", 0).show();
+			if (shareActionProvider != null)
+				shareActionProvider.setShareIntent(ShareUtils
+						.getShareTextIntent("修改后的文本"));
+			break;
+		case R.id.action_wx:
+			wxUtils.sendTextToWX("微信分享");
+			// Toast.makeText(this, "微信分享！", 0).show();
+			break;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
 	public void setContentViewLayout() {
 		setContentView(R.layout.activity_main);
 	}
@@ -96,6 +130,9 @@ public class MainActivity extends BaseActivity_v4 {
 	@Override
 	public void initSomeWork() {
 		super.initSomeWork();
+		wxUtils = new WXUtils(this);
+		wxUtils.registerToWX(this);
+
 		adapter = new CustomBaseAdapter<Person>(this,
 				DataBuffer.getListPerson(), R.layout.listview_content_item);
 	}
@@ -370,4 +407,5 @@ public class MainActivity extends BaseActivity_v4 {
 		linearLayout_addMoney.setVisibility(View.VISIBLE);
 		linearLayout_addPerson.setVisibility(View.GONE);
 	}
+
 }

@@ -2,7 +2,7 @@
 
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="101"
+        android:orderInCategory="108"
         android:showAsAction="ifRoom"
         android:title="@string/action_settings"/>
     <item
@@ -11,5 +11,18 @@
         android:icon="@android:drawable/ic_search_category_default"
         android:orderInCategory="100"
         android:showAsAction="collapseActionView|always"/>
+    <item
+        android:id="@+id/action_share"
+        android:actionProviderClass="android.widget.ShareActionProvider"
+        android:icon="@android:drawable/ic_menu_share"
+        android:orderInCategory="101"
+        android:showAsAction="always"/>
+    <item 
+        android:id="@+id/action_wx"
+        android:orderInCategory="105"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/wx_friends"
+        android:title="@string/wx_share"
+        />
 
 </menu>
