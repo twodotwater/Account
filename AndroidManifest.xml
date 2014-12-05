@@ -9,18 +9,24 @@
         android:targetSdkVersion="17" />
 
     <application
-        android:name="com.zzha.util.os.CatchExcepApplication_v4"
+        android:name="com.lzhn.utils.os.CatchExcepApplication_v4"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.lzhn.account.MainActivity"
+            android:name="com.yqy.account.MainActivity"
+            android:exported="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>

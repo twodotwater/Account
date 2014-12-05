@@ -108,7 +108,9 @@
             <TextView
                 android:id="@+id/textView_totalMoney"
                 style="@style/TextViewInLinear"
+                android:ellipsize="end"
                 android:paddingLeft="@dimen/padding_normal"
+                android:singleLine="true"
                 android:textColor="@color/holo_red_light"
                 android:textSize="@dimen/tv_large" />
 
@@ -121,7 +123,9 @@
             <TextView
                 android:id="@+id/textView_averageMoney"
                 style="@style/TextViewInLinear"
+                android:ellipsize="end"
                 android:paddingLeft="@dimen/padding_normal"
+                android:singleLine="true"
                 android:textColor="@color/holo_red_light"
                 android:textSize="@dimen/tv_large" />
         </LinearLayout>
