@@ -22,8 +22,8 @@ import android.widget.Toast;
 
 import com.lzhn.account.R;
 import com.lzhn.utils.adapter.CustomBaseAdapter;
-import com.lzhn.utils.adapter.ViewHolder;
 import com.lzhn.utils.adapter.CustomBaseAdapter.OnGetViewListener;
+import com.lzhn.utils.adapter.ViewHolder;
 import com.lzhn.utils.os.BaseActivity_v4;
 import com.lzhn.utils.print.LogUtils;
 import com.lzhn.utils.share.ShareUtils;
@@ -33,6 +33,7 @@ import com.lzhn.utils.view.dialog.MyDialog;
 import com.lzhn.utils.view.dialog.MyDialog.OnBtnClickListener;
 import com.yqy.account.common.Constant;
 import com.yqy.account.common.DataBuffer;
+import com.yqy.account.common.FileManager;
 import com.yqy.account.common.Person;
 import com.yqy.account.db.DBManager;
 
@@ -307,10 +308,21 @@ public class MainActivity extends BaseActivity_v4 {
 
 									Toast.makeText(MainActivity.this, "已存储数据！",
 											0).show();
+
 								} else {
 									Toast.makeText(MainActivity.this,
 											"存储数据失败！", 0).show();
 
+								}
+
+								// 保存文件
+								String fileName = FileManager.saveFile();
+								if (fileName != null) {
+									Toast.makeText(MainActivity.this,
+											"已保存文件！\n" + fileName, 0).show();
+								} else {
+									Toast.makeText(MainActivity.this,
+											"文件保存失败！", 0).show();
 								}
 							} else {
 								Toast.makeText(MainActivity.this, "暂无可存储的数据！",

@@ -21,6 +21,10 @@ public class ConvertUtils {
 	public static final String PATTERN_4 = "MMddHHmmss";
 	/** 格式 yyyy/MM/dd\tHH:mm:ss */
 	public static final String PATTERN_5 = "yyyy/MM/dd\tHH:mm:ss";
+	/** 格式 yyyy/MM/dd-HH:mm:ss */
+	public static final String PATTERN_6 = "yyyy/MM/dd-HH:mm:ss";
+	/** 格式 yyyyMMddHHmmss */
+	public static final String PATTERN_8 = "yyyyMMddHHmmss";
 
 	/**
 	 * 将时间毫秒值转换为格式化的日期或时间
