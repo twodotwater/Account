@@ -123,6 +123,7 @@ public class DBManager {
 				+ " = '" + account.getTime() + "';";
 		Cursor cursor = database.rawQuery(sql, null);
 		List<Person> listPerson = new ArrayList<Person>();
+		int len = cursor.getCount();
 		while (cursor.moveToNext()) {
 			Person p = new Person(cursor.getString(cursor
 					.getColumnIndex(PERSON_NAME)));
@@ -130,7 +131,7 @@ public class DBManager {
 			String moneyString = cursor.getString(cursor
 					.getColumnIndex(PERSON_MONEY));
 			p.setMoney(Person.parseStringToMoney(moneyString));
-			p.setDiffMoney(p.getTotalMoney() - account.getTotalMoney());
+			p.setDiffMoney(p.getTotalMoney() - account.getTotalMoney() / len);
 			listPerson.add(p);
 		}
 		return listPerson;
