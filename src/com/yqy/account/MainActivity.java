@@ -2,6 +2,8 @@ package com.yqy.account;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
@@ -349,11 +351,16 @@ public class MainActivity extends BaseActivity_v4 {
 		boolean isInputCorrect = true;
 		List<Float> moneys = new ArrayList<Float>();
 		String moneyString = editText_money.getText().toString().trim();
-		String regularExpression = "[^\\d\\.]+";// 正则表达式：以不是数字、不是“.”分割输入金额
+		String regularExpression = "[\\+\\-]?\\d*\\.?\\d+";// 分割输入金额
+		Pattern pattern = Pattern.compile(regularExpression);
+		Matcher matcher = pattern.matcher(moneyString);
 		try {
-			String[] strs = moneyString.split(regularExpression);
-			for (int i = 0; i < strs.length; i++) {
-				moneys.add(Float.parseFloat(strs[i]));
+			// LogUtils.printExcp(TAG, moneyString);
+			while (matcher.find()) {
+				String str = matcher.group();
+				if (!str.trim().isEmpty()) {
+					moneys.add(Float.parseFloat(str));
+				}
 			}
 
 		} catch (Exception e) {
