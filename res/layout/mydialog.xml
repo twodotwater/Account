@@ -38,8 +38,12 @@
 
         <EditText
             android:id="@+id/et_input"
-            style="@style/TextViewInLinear"
-            android:textColor="@android:color/holo_blue_dark" />
+            style="@style/EditText"
+            android:layout_margin="@dimen/margin_normal"
+            android:layout_weight="1"
+            android:padding="@dimen/padding_small"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="@dimen/tv_normal" />
     </LinearLayout>
 
     <LinearLayout

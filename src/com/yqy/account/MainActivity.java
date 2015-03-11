@@ -1,6 +1,7 @@
 package com.yqy.account;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,9 +10,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -54,6 +57,8 @@ public class MainActivity extends BaseActivity_v4 {
 	private LinearLayout linearLayout_calculate;
 
 	private CustomBaseAdapter<Person> adapter;
+	private ArrayAdapter<String> spinnerNameAdapter;
+	private List<String> nameList;
 
 	private long previousPressTime = 0;
 
@@ -136,6 +141,11 @@ public class MainActivity extends BaseActivity_v4 {
 		WXUtils.registerToWX(this);
 		adapter = new CustomBaseAdapter<Person>(this,
 				DataBuffer.getListPerson(), R.layout.listview_content_item);
+		nameList = new ArrayList<String>();
+		nameList.addAll(Arrays.asList(getResources().getStringArray(
+				R.array.array_name)));
+		spinnerNameAdapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_dropdown_item, nameList);
 	}
 
 	@Override
@@ -184,6 +194,43 @@ public class MainActivity extends BaseActivity_v4 {
 			}
 		});
 
+		spinner_name.setOnLongClickListener(new OnLongClickListener() {
+
+			@Override
+			public boolean onLongClick(View v) {
+				// TODO 添加新人名
+				DialogUtils.showInputDialog(MainActivity.this, "请输入新的人名", "",
+						new OnBtnClickListener() {
+
+							@Override
+							public void onOKClick(MyDialog dialog) {
+								String name = dialog.getInputText().trim();
+								if (name.isEmpty()) {
+									return;
+								}
+								for (String s : nameList) {
+									if (name.equalsIgnoreCase(s)) {
+										Toast.makeText(getApplicationContext(),
+												"该姓名已存在！", Toast.LENGTH_SHORT)
+												.show();
+										return;
+									}
+								}
+								nameList.add(name);
+								spinnerNameAdapter.notifyDataSetChanged();
+								spinner_name.setSelection(nameList.size() - 1);
+								dialog.dismiss();
+							}
+
+							@Override
+							public void onNOClick(MyDialog dialog) {
+
+							}
+						});
+				return false;
+			}
+		});
+
 		listView_content.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -225,6 +272,7 @@ public class MainActivity extends BaseActivity_v4 {
 		});
 
 		listView_content.setAdapter(adapter);
+		spinner_name.setAdapter(spinnerNameAdapter);
 	}
 
 	/**
