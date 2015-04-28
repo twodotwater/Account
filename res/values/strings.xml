@@ -9,10 +9,12 @@
     
     <string name="select_name">选择人名</string>
     <string name="name_li">李</string>
-    <string name="name_hu">胡</string>
     <string name="name_cui">崔</string>
     <string name="name_zhang">张</string>
     <string name="name_xu">徐</string>
+    <string name="name_wang">王</string>
+    <string name="name_guo">郭</string>
+    <string name="name_hu">胡</string>
     <string name="add_money">添加金额</string>
     <string name="add_money_hint">请输入金额（以“+”或“-”分隔）…</string>
     <string name="add_person">添加人员</string>
